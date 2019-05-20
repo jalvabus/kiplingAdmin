@@ -60,8 +60,14 @@
                 <div class="nav-wrapper">
                     <ul class="nav flex-column">
                         <li class="nav-item">
+                            <a class="nav-link" href="puntos.html">
+                                <i class="material-icons">payment</i>
+                                <span>Puntos</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="pedidos.html">
-                                <i class="material-icons">edit</i>
+                                <i class="material-icons">list</i>
                                 <span>Pedidos</span>
                             </a>
                         </li>
@@ -102,35 +108,23 @@
                 <div class="main-navbar sticky-top bg-white">
                     <!-- Main Navbar -->
                     <nav class="navbar align-items-stretch navbar-light flex-md-nowrap p-0">
-                        <form action="#" class="main-navbar__search w-100 d-none d-md-flex d-lg-flex">
-                            <div class="input-group input-group-seamless ml-3">
-                                <div class="input-group-prepend">
-                                    <div class="input-group-text">
-                                        <i class="fas fa-search"></i>
-                                    </div>
-                                </div>
-                                <input class="navbar-search form-control" type="text" placeholder="Search for something..."
-                                    aria-label="Search">
-                            </div>
-                        </form>
+                        <form action="#" class="main-navbar__search w-100 d-none d-md-flex d-lg-flex"> </form>
                         <ul class="navbar-nav border-left flex-row ">
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle text-nowrap px-3" data-toggle="dropdown" href="#"
-                                    role="button" aria-haspopup="true" aria-expanded="false">
-                                    <img class="user-avatar rounded-circle mr-2" src="assets/images/avatars/0.jpg" alt="User Avatar">
-                                    <span class="d-none d-md-inline-block">Sierra Brooks</span>
+                                <a class="nav-link dropdown-toggle text-nowrap px-3" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                    <span class="d-none d-md-inline-block">{{ usuario.usuario }} - {{ usuario.tipo }}</span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-small">
-                                    <a class="dropdown-item" href="user-profile-lite.html">
+                                    <a class="dropdown-item" href="perfil.html">
                                         <i class="material-icons">&#xE7FD;</i> Profile</a>
-                                    <a class="dropdown-item text-danger" href="#">
+                                    <a class="dropdown-item text-danger" onclick="logout()">
                                         <i class="material-icons text-danger">&#xE879;</i> Logout </a>
                                 </div>
                             </li>
                         </ul>
                         <nav class="nav">
-                            <a href="#" class="nav-link nav-link-icon toggle-sidebar d-md-inline d-lg-none text-center border-left"
-                                data-toggle="collapse" data-target=".header-navbar" aria-expanded="false" aria-controls="header-navbar">
+                            <a href="#" class="nav-link nav-link-icon toggle-sidebar d-md-inline d-lg-none text-center border-left" data-toggle="collapse"
+                                data-target=".header-navbar" aria-expanded="false" aria-controls="header-navbar">
                                 <i class="material-icons">&#xE5D2;</i>
                             </a>
                         </nav>
@@ -155,8 +149,7 @@
                         <div class="col-lg-4 col-md-6 col-sm-6 mb-4">
                             <div class="card card-small">
                                 <div class="card-body p-0 d-flex">
-                                    <button ng-click="getPedidosSemana()" class="bg-primary rounded text-white text-center p-3 btn-block"
-                                        style="box-shadow: inset 0 0 5px rgba(0,0,0,.2);">Pedidos
+                                    <button ng-click="getPedidosSemana()" class="bg-primary rounded text-white text-center p-3 btn-block" style="box-shadow: inset 0 0 5px rgba(0,0,0,.2);">Pedidos
                                         de la semana</button>
                                 </div>
                             </div>
@@ -164,17 +157,16 @@
                         <div class="col-lg-4 col-md-6 col-sm-6 mb-4">
                             <div class="card card-small">
                                 <div class="card-body p-0 d-flex">
-                                    <button ng-click="getPedidosPendientes()" class="bg-primary rounded text-white text-center p-3 btn-block"
-                                        style="box-shadow: inset 0 0 5px rgba(0,0,0,.2);">Pagos
-                                        Pendientes</button>
+                                    <button ng-click="getPedidosPendientes()" class="bg-primary rounded text-white text-center p-3 btn-block" style="box-shadow: inset 0 0 5px rgba(0,0,0,.2);">Pagos
+                                        Pendientes
+                                    </button>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6 col-sm-6 mb-4">
                             <div class="card card-small">
                                 <div class="card-body p-0 d-flex">
-                                    <button ng-click="getAll()" class="bg-primary rounded text-white text-center p-3 btn-block"
-                                        style="box-shadow: inset 0 0 5px rgba(0,0,0,.2);">Historial
+                                    <button ng-click="getAll()" class="bg-primary rounded text-white text-center p-3 btn-block" style="box-shadow: inset 0 0 5px rgba(0,0,0,.2);">Historial
                                         de Pedidos</button>
                                 </div>
                             </div>
@@ -228,9 +220,8 @@
                                             </thead>
                                             <tbody ng-repeat="pedido in pedidos">
                                                 <tr ng-repeat="detalles in pedido.detalles">
-                                                    <td>{{ detalles.alumno.nombre }} {{
-                                                        detalles.alumno.apellido_paterno }} {{
-                                                        detalles.alumno.apellido_paterno }}
+                                                    <td>{{ detalles.alumno.nombre }} {{ detalles.alumno.apellido_paterno
+                                                        }} {{ detalles.alumno.apellido_materno }}
                                                     </td>
                                                     <td>{{ detalles.alumno.grupo }}</td>
                                                     <td>{{ detalles.menu.dia }} - {{ detalles.menu.comida }}</td>
@@ -238,8 +229,7 @@
                                                         <button ng-if="!detalles.entregado" class="btn btn-default btn-warning">
                                                             <i class="fa fa-check"></i> Entregar
                                                         </button>
-                                                        <button ng-if="pedido.entregado" class="btn btn-default btn-success"
-                                                            disabled>
+                                                        <button ng-if="pedido.entregado" class="btn btn-default btn-success" disabled>
                                                             <i class="fa fa-check"></i> Entregadó
                                                         </button>
                                                     </td>
@@ -255,8 +245,7 @@
                 </div>
 
                 <!-- Modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                    aria-hidden="true">
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-lg" style="padding-top: 10%;" role="document">
                         <div class="modal-content">
                             <div class="modal-header text-center">
@@ -279,8 +268,8 @@
                                     </thead>
                                     <tbody>
                                         <tr ng-repeat="detalles in pedido.detalles">
-                                            <td>{{ detalles.alumno.nombre }} {{ detalles.alumno.apellido_paterno }} {{
-                                                detalles.alumno.apellido_materno }} - {{ detalles.alumno.grupo }}</td>
+                                            <td>{{ detalles.alumno.nombre }} {{ detalles.alumno.apellido_paterno }} {{ detalles.alumno.apellido_materno
+                                                }} - {{ detalles.alumno.grupo }}</td>
                                             <td>{{ detalles.menu.dia }}</td>
                                             <td>{{ detalles.menu.comida }}</td>
                                             <td>{{ detalles.menu.agua }}</td>
@@ -330,6 +319,7 @@
     <script src="assets/scripts/app/app-blog-overview.1.1.0.js"></script>
 
     <script src="js/views/pedidos.js"></script>
+    <script src="js/views/logout.js"></script>
 </body>
 
 </html>

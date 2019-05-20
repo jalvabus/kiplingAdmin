@@ -6,6 +6,20 @@ var app = angular.module('pedidosApp', [])
         $scope.startDate = null;
         $scope.endDate = null;
 
+        $scope.usuario = {};
+
+        $scope.authLogin = function () {
+            if (!localStorage.getItem("user")) {
+                window.location.replace('login.html');
+            } else {
+                $scope.usuario = JSON.parse(window.localStorage.getItem('user'));
+                $scope.usuario.telefono = Number(JSON.parse(window.localStorage.getItem('user')).telefono);
+                console.log($scope.usuario);
+            }
+        }
+
+        $scope.authLogin();
+
         $scope.getPedidosSemana = function () {
 
             $scope.add = 0;

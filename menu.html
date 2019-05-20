@@ -61,8 +61,14 @@
                 <div class="nav-wrapper">
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link " href="pedidos.html">
-                                <i class="material-icons">edit</i>
+                            <a class="nav-link" href="puntos.html">
+                                <i class="material-icons">payment</i>
+                                <span>Puntos</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="pedidos.html">
+                                <i class="material-icons">list</i>
                                 <span>Pedidos</span>
                             </a>
                         </li>
@@ -103,35 +109,23 @@
                 <div class="main-navbar sticky-top bg-white">
                     <!-- Main Navbar -->
                     <nav class="navbar align-items-stretch navbar-light flex-md-nowrap p-0">
-                        <form action="#" class="main-navbar__search w-100 d-none d-md-flex d-lg-flex">
-                            <div class="input-group input-group-seamless ml-3">
-                                <div class="input-group-prepend">
-                                    <div class="input-group-text">
-                                        <i class="fas fa-search"></i>
-                                    </div>
-                                </div>
-                                <input class="navbar-search form-control" type="text" placeholder="Search for something..."
-                                    aria-label="Search">
-                            </div>
-                        </form>
+                        <form action="#" class="main-navbar__search w-100 d-none d-md-flex d-lg-flex"> </form>
                         <ul class="navbar-nav border-left flex-row ">
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle text-nowrap px-3" data-toggle="dropdown" href="#"
-                                    role="button" aria-haspopup="true" aria-expanded="false">
-                                    <img class="user-avatar rounded-circle mr-2" src="assets/images/avatars/0.jpg" alt="User Avatar">
-                                    <span class="d-none d-md-inline-block">Sierra Brooks</span>
+                                <a class="nav-link dropdown-toggle text-nowrap px-3" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                    <span class="d-none d-md-inline-block">{{ usuario.usuario }} - {{ usuario.tipo }}</span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-small">
-                                    <a class="dropdown-item" href="user-profile-lite.html">
+                                    <a class="dropdown-item" href="perfil.html">
                                         <i class="material-icons">&#xE7FD;</i> Profile</a>
-                                    <a class="dropdown-item text-danger" href="#">
+                                    <a class="dropdown-item text-danger" onclick="logout()">
                                         <i class="material-icons text-danger">&#xE879;</i> Logout </a>
                                 </div>
                             </li>
                         </ul>
                         <nav class="nav">
-                            <a href="#" class="nav-link nav-link-icon toggle-sidebar d-md-inline d-lg-none text-center border-left"
-                                data-toggle="collapse" data-target=".header-navbar" aria-expanded="false" aria-controls="header-navbar">
+                            <a href="#" class="nav-link nav-link-icon toggle-sidebar d-md-inline d-lg-none text-center border-left" data-toggle="collapse"
+                                data-target=".header-navbar" aria-expanded="false" aria-controls="header-navbar">
                                 <i class="material-icons">&#xE5D2;</i>
                             </a>
                         </nav>
@@ -163,8 +157,9 @@
                                         <div class="progress-wrapper">
                                             <div class="row">
                                                 <div class="col-lg-3">
-                                                    <button class="btn btn-primary btn-block" data-toggle="modal"
-                                                        data-target="#exampleModal">Agregar Menu</button>
+                                                    <button class="btn btn-primary btn-block" data-toggle="modal" data-target="#exampleModal">Agregar
+                                                        Menu
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>
@@ -192,7 +187,7 @@
                                                 <p class="mb-1">Comida: {{ menus.menu1.comida }}</p>
                                                 <p class="mb-1">Agua: {{ menus.menu1.agua }}</p>
                                                 <p class="mb-1">Postre: {{ menus.menu1.postre }}</p>
-                                                <p class="mb-1">Precio: $ {{ menus.menu1.precio }}</p>
+                                                <p class="mb-1">Precio Puntos: {{ menus.menu1.precio }}</p>
                                             </div>
                                         </div>
                                     </li>
@@ -203,7 +198,7 @@
                                                 <p class="mb-1">Comida: {{ menus.menu2.comida }}</p>
                                                 <p class="mb-1">Agua: {{ menus.menu2.agua }}</p>
                                                 <p class="mb-1">Postre: {{ menus.menu2.postre }}</p>
-                                                <p class="mb-1">Precio: $ {{ menus.menu2.precio }}</p>
+                                                <p class="mb-1">Precio Puntos: {{ menus.menu2.precio }}</p>
                                             </div>
                                         </div>
                                     </li>
@@ -236,8 +231,7 @@
 
 
                 <!-- Modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                    aria-hidden="true">
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content">
                             <div class="modal-header text-center">
@@ -271,9 +265,8 @@
                                             <input type="text" class="form-control" ng-model="menu.postre" placeholder="Postre">
                                         </div>
                                         <div class="form-group">
-                                            <label for="">Precio</label>
-                                            <input type="number" class="form-control" ng-model="menu.precio"
-                                                placeholder="Precio">
+                                            <label for="">Precio Puntos</label>
+                                            <input type="number" class="form-control" ng-model="menu.precio" placeholder="Precio">
                                         </div>
                                     </div>
                                     <div class="col-6">
@@ -293,16 +286,16 @@
                                             <input type="text" class="form-control" ng-model="menu2.postre" placeholder="Postre">
                                         </div>
                                         <div class="form-group">
-                                            <label for="">Precio</label>
-                                            <input type="number" class="form-control" ng-model="menu2.precio"
-                                                placeholder="Precio">
+                                            <label for="">Precio Puntos</label>
+                                            <input type="number" class="form-control" ng-model="menu2.precio" placeholder="Precio">
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <button class="btn btn-primary btn-block" ng-click="registrarMenu()" data-dismiss="modal">Registrar
-                                        Menu</button>
+                                        Menu
+                                    </button>
                                 </div>
                                 <div class="form-group">
                                     <button class="btn btn-danger btn-block" data-dismiss="modal">
@@ -336,6 +329,7 @@
     <script src="assets/scripts/app/app-blog-overview.1.1.0.js"></script>
 
     <script src="js/views/menu.js"></script>
+    <script src="js/views/logout.js"></script>
 </body>
 
 </html>

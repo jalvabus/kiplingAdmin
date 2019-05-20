@@ -52,15 +52,20 @@
                                 <i class="fas fa-search"></i>
                             </div>
                         </div>
-                        <input class="navbar-search form-control" type="text" placeholder="Search for something..."
-                            aria-label="Search">
+                        <input class="navbar-search form-control" type="text" placeholder="Search for something..." aria-label="Search">
                     </div>
                 </form>
                 <div class="nav-wrapper">
                     <ul class="nav flex-column">
                         <li class="nav-item">
+                            <a class="nav-link" href="puntos.html">
+                                <i class="material-icons">payment</i>
+                                <span>Puntos</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="pedidos.html">
-                                <i class="material-icons">edit</i>
+                                <i class="material-icons">list</i>
                                 <span>Pedidos</span>
                             </a>
                         </li>
@@ -101,35 +106,23 @@
                 <div class="main-navbar sticky-top bg-white">
                     <!-- Main Navbar -->
                     <nav class="navbar align-items-stretch navbar-light flex-md-nowrap p-0">
-                        <form action="#" class="main-navbar__search w-100 d-none d-md-flex d-lg-flex">
-                            <div class="input-group input-group-seamless ml-3">
-                                <div class="input-group-prepend">
-                                    <div class="input-group-text">
-                                        <i class="fas fa-search"></i>
-                                    </div>
-                                </div>
-                                <input class="navbar-search form-control" type="text" placeholder="Search for something..."
-                                    aria-label="Search">
-                            </div>
-                        </form>
+                        <form action="#" class="main-navbar__search w-100 d-none d-md-flex d-lg-flex"> </form>
                         <ul class="navbar-nav border-left flex-row ">
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle text-nowrap px-3" data-toggle="dropdown" href="#"
-                                    role="button" aria-haspopup="true" aria-expanded="false">
-                                    <img class="user-avatar rounded-circle mr-2" src="assets/images/avatars/0.jpg" alt="User Avatar">
-                                    <span class="d-none d-md-inline-block">Sierra Brooks</span>
+                                <a class="nav-link dropdown-toggle text-nowrap px-3" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                    <span class="d-none d-md-inline-block">{{ usuario.usuario }} - {{ usuario.tipo }}</span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-small">
-                                    <a class="dropdown-item" href="user-profile-lite.html">
+                                    <a class="dropdown-item" href="perfil.html">
                                         <i class="material-icons">&#xE7FD;</i> Profile</a>
-                                    <a class="dropdown-item text-danger" href="#">
+                                    <a class="dropdown-item text-danger" onclick="logout()">
                                         <i class="material-icons text-danger">&#xE879;</i> Logout </a>
                                 </div>
                             </li>
                         </ul>
                         <nav class="nav">
-                            <a href="#" class="nav-link nav-link-icon toggle-sidebar d-md-inline d-lg-none text-center border-left"
-                                data-toggle="collapse" data-target=".header-navbar" aria-expanded="false" aria-controls="header-navbar">
+                            <a href="#" class="nav-link nav-link-icon toggle-sidebar d-md-inline d-lg-none text-center border-left" data-toggle="collapse"
+                                data-target=".header-navbar" aria-expanded="false" aria-controls="header-navbar">
                                 <i class="material-icons">&#xE5D2;</i>
                             </a>
                         </nav>
@@ -141,7 +134,7 @@
                 <div class="main-content-container container-fluid px-4">
                     <!-- Page Header -->
                     <div class="page-header row no-gutters py-4">
-                        <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
+                        <div class="col-12 col-sm-12 text-center text-sm-left mb-0">
                             <span class="text-uppercase page-subtitle">Cafeteria Kipling</span>
                             <h3 class="page-title">Usuarios Kipling (Padres de Familia)</h3>
                         </div>
@@ -163,19 +156,19 @@
                                                 <div class="col-sm-12 col-md-12 col-lg-4">
                                                     <div class="form-group">
                                                         <label for="">Nombre</label>
-                                                        <input type="text" class="form-control" ng-model="usuario.nombre">
+                                                        <input type="text" class="form-control" ng-model="usuarioRegistro.nombre">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-12 col-md-12 col-lg-4">
                                                     <div class="form-group">
                                                         <label for="">Apellido Paterno</label>
-                                                        <input type="text" class="form-control" ng-model="usuario.apellido_paterno">
+                                                        <input type="text" class="form-control" ng-model="usuarioRegistro.apellido_paterno">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-12 col-md-12 col-lg-4">
                                                     <div class="form-group">
                                                         <label for="">Apellido Materno</label>
-                                                        <input type="text" class="form-control" ng-model="usuario.apellido_materno">
+                                                        <input type="text" class="form-control" ng-model="usuarioRegistro.apellido_materno">
                                                     </div>
                                                 </div>
                                             </div>
@@ -184,19 +177,19 @@
                                                 <div class="col-sm-12 col-md-12 col-lg-4">
                                                     <div class="form-group">
                                                         <label for="">Email</label>
-                                                        <input type="text" class="form-control" ng-model="usuario.email">
+                                                        <input type="text" class="form-control" ng-model="usuarioRegistro.email">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-12 col-md-12 col-lg-4">
                                                     <div class="form-group">
                                                         <label for="">Direccion</label>
-                                                        <input type="text" class="form-control" ng-model="usuario.direccion">
+                                                        <input type="text" class="form-control" ng-model="usuarioRegistro.direccion">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-12 col-md-12 col-lg-4">
                                                     <div class="form-group">
                                                         <label for="">Telefono</label>
-                                                        <input type="number" class="form-control" ng-model="usuario.telefono">
+                                                        <input type="number" class="form-control" ng-model="usuarioRegistro.telefono">
                                                     </div>
                                                 </div>
                                             </div>
@@ -244,8 +237,6 @@
                                             <tr>
                                                 <th scope="col" class="border-0">Usuario</th>
                                                 <th scope="col" class="border-0">Nombre Completo</th>
-                                                <th scope="col" class="border-0">Direccion</th>
-                                                <th scope="col" class="border-0">Email</th>
                                                 <th scope="col" class="border-0">Telefono</th>
                                                 <td scope="col" class="border-0">Opcion</td>
                                             </tr>
@@ -253,17 +244,15 @@
                                         <tbody>
                                             <tr ng-repeat="usuario in usuarios">
                                                 <td>{{ usuario.usuario }}</td>
-                                                <td>{{ usuario.nombre }} {{ usuario.apellido_paterno}} {{
-                                                    usuario.apellido_materno }}</td>
-                                                <td>{{ usuario.direccion }}</td>
-                                                <td>{{ usuario.email }}</td>
+                                                <td>{{ usuario.nombre }} {{ usuario.apellido_paterno}} {{ usuario.apellido_materno
+                                                    }}
+                                                </td>
                                                 <td>{{ usuario.telefono }}</td>
                                                 <td>
                                                     <button class="btn btn-light" ng-click="eliminarUsuario(usuario)">
                                                         <i class="fa fa-trash"></i>
                                                     </button>
-                                                    <button class="btn btn-light" data-toggle="modal" data-target="#exampleModal"
-                                                        ng-click="agregarAlumnos(usuario)">
+                                                    <button class="btn btn-light" data-toggle="modal" data-target="#exampleModal" ng-click="agregarAlumnos(usuario)">
                                                         <i class="fa fa-list"></i>
                                                     </button>
                                                 </td>
@@ -288,8 +277,7 @@
     </div>
 
     <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-md" role="document">
             <div class="modal-content modal-md">
                 <div class="modal-header">
@@ -299,13 +287,20 @@
                     </button>
                 </div>
                 <div class="modal-body">
+                    <div>
+                        <h6><strong>Direccion:</strong> {{ usuarioSeleccionado.direccion }}</h6>
+                    </div>
+                    <div>
+                        <h6><strong>Correo:</strong> {{ usuarioSeleccionado.email }}</h6>
+                    </div>
                     <div class="mb-5">
-                        <h6>Alumnos</h6>
+                        <h6><strong>Alumnos (Hijos): </strong></h6>
                         <table class="table mb-0">
                             <thead class="bg-light" ng-repeat="alumn in usuarioSeleccionado.alumno">
                                 <tr>
-                                    <th>{{ alumn.nombre }} {{ alumn.apellido_paterno }} {{ alumn.apellido_materno }} -
-                                        {{ alumn.grupo}}</th>
+                                    <th>{{ alumn.nombre }} {{ alumn.apellido_paterno }} {{ alumn.apellido_materno }} - {{
+                                        alumn.grupo}}
+                                    </th>
                                     <th>
                                         <button data-dismiss="modal" class="btn btn-danger btn-sm" ng-click="removerAlumno(alumn)">
                                             <i class="fa fa-trash"></i>
@@ -317,15 +312,15 @@
                     </div>
                     <div class="form-group">
                         <label for="">Alumno (Hijo)</label>
-                        <select name="" id="" class="form-control" ng-model="usuario.id_alumno">
-                            <option ng-repeat="alumno in alumnos" value="{{ alumno._id }}">{{
-                                alumno.nombre }} {{ alumno.apellido_paterno }} {{
-                                alumno.apellido_materno }}</option>
+                        <select name="" id="" class="form-control" ng-model="usuarioRegistro.id_alumno">
+                            <option ng-repeat="alumno in alumnos" value="{{ alumno._id }}">{{ alumno.nombre }} {{ alumno.apellido_paterno
+                                }} {{ alumno.apellido_materno }}</option>
                         </select>
                     </div>
                     <div>
-                        <button class="btn btn-block btn-light btn-outline-primary" ng-click="relacionarAlumno()"
-                            data-dismiss="modal">Relacionar Alumno</button>
+                        <button class="btn btn-block btn-light btn-outline-primary" ng-click="relacionarAlumno()" data-dismiss="modal">Relacionar
+                            Alumno
+                        </button>
                     </div>
                 </div>
             </div>
@@ -346,6 +341,7 @@
     <script src="assets/scripts/app/app-blog-overview.1.1.0.js"></script>
 
     <script src="js/views/usuario.js"></script>
+    <script src="js/views/logout.js"></script>
 </body>
 
 </html>

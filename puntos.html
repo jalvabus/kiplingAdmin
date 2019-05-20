@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="alumnosApp">
+<html lang="en" ng-app="usuariosApp">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Alumnos</title>
+    <title>Padres de familia</title>
 
     <!-- Style Templates -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -23,11 +23,9 @@
     <script src="js/angular/angular.js"></script>
     <script src="js/sweetalert/sweetalert.js"></script>
     <script src="js/jquery-3.2.1.min.js"></script>
-
-    <script src="js/moment.js"></script>
 </head>
 
-<body class="h-100" ng-controller="alumnosController">
+<body class="h-100" ng-controller="usuariosController">
 
     <div class="container-fluid">
         <div class="row">
@@ -48,19 +46,12 @@
                     </nav>
                 </div>
                 <form action="#" class="main-sidebar__search w-100 border-right d-sm-flex d-md-none d-lg-none">
-                    <div class="input-group input-group-seamless ml-3">
-                        <div class="input-group-prepend">
-                            <div class="input-group-text">
-                                <i class="fas fa-search"></i>
-                            </div>
-                        </div>
-                        <input class="navbar-search form-control" type="text" placeholder="Search for something..." aria-label="Search">
-                    </div>
+
                 </form>
                 <div class="nav-wrapper">
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link" href="puntos.html">
+                            <a class="nav-link active" href="puntos.html">
                                 <i class="material-icons">payment</i>
                                 <span>Puntos</span>
                             </a>
@@ -84,13 +75,13 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="alumnos.html">
+                            <a class="nav-link " href="alumnos.html">
                                 <i class="material-icons">note_add</i>
                                 <span>Alumnos</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link " href="usuarios.html">
+                            <a class="nav-link" href="usuarios.html">
                                 <i class="material-icons">view_module</i>
                                 <span>Padres de Familia</span>
                             </a>
@@ -136,75 +127,18 @@
                 <div class="main-content-container container-fluid px-4">
                     <!-- Page Header -->
                     <div class="page-header row no-gutters py-4">
-                        <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
+                        <div class="col-6 col-sm-6 text-center text-sm-left mb-0">
                             <span class="text-uppercase page-subtitle">Cafeteria Kipling</span>
-                            <h3 class="page-title">Alumnos Kipling</h3>
+                            <h3 class="page-title">Puntos Usarios (Padres de Familia)</h3>
                         </div>
+                        <div class="col-6 col-sm-6 text-center text-sm-left mb-0">
+                                <span class="text-uppercase page-subtitle">-</span>
+                                <h3 class="page-title">Puntos Totales Kipling: {{ puntos.totalPuntos }}</h3>
+                            </div>
                     </div>
                     <!-- End Page Header -->
 
                     <div class="row">
-
-                        <div class="col-lg-12">
-                            <div class="card card-small mb-4 pt-3">
-                                <div class="card-header border-bottom text-center">
-                                    <h4 class="mb-0">Agregar Alumno</h4>
-                                </div>
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item px-4">
-                                        <div class="progress-wrapper">
-                                            <strong class="text-muted d-block mb-2">Datos del Alumno</strong>
-                                            <div class="row">
-                                                <div class="col-3">
-                                                    <div class="form-group">
-                                                        <label for="">Grado y Grupo</label>
-                                                        <select name="" id="" class="form-control" ng-model="alumno.salon">
-                                                            <option value="1A">1A</option>
-                                                            <option value="2A">2A</option>
-                                                            <option value="3A">3A</option>
-                                                            <option value="4A">4A</option>
-                                                            <option value="5A">5A</option>
-                                                            <option value="6A">6A</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="col-3">
-                                                    <div class="form-group">
-                                                        <label for="">Ciclo Escolar Cursando</label>
-                                                        <select name="" id="" class="form-control" ng-model="alumno.cicloEscolar">
-                                                            <option ng-repeat="ciclo in ciclosEscolares" value="{{ ciclo._id }}">{{
-                                                                ciclo.fecha_inicio }} - {{ ciclo.fecha_fin }}</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="col-6"></div>
-                                                <div class="col-3">
-                                                    <div class="form-group">
-                                                        <label for="">Nombre</label>
-                                                        <input type="text" class="form-control" ng-model="alumno.nombre">
-                                                    </div>
-                                                </div>
-                                                <div class="col-3">
-                                                    <div class="form-group">
-                                                        <label for="">Apellido Paterno</label>
-                                                        <input type="text" class="form-control" ng-model="alumno.apellido_paterno">
-                                                    </div>
-                                                </div>
-                                                <div class="col-3">
-                                                    <div class="form-group">
-                                                        <label for="">Apellido Materno</label>
-                                                        <input type="text" class="form-control" ng-model="alumno.apellido_materno">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="list-group-item p-4">
-                                        <button class="btn btn-block btn-primary" ng-click="registrarAlumno()">Agregar</button>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
 
                         <!-- Default Light Table -->
                         <div class="col-lg-12">
@@ -212,15 +146,7 @@
                                 <div class="card-header border-bottom">
                                     <div class="row">
                                         <div class="col-lg-12">
-                                            <h6 class="m-0">Alumnos Actuales</h6>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                                <label for="">Filrar Por Grupos</label>
-                                                <select name="" id="" class="form-control">
-                                                    <option value="">Todos</option>
-                                                </select>
-                                            </div>
+                                            <h6 class="m-0">Usuarios Actuales</h6>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="form-group">
@@ -234,24 +160,22 @@
                                     <table class="table mb-0">
                                         <thead class="bg-light">
                                             <tr>
-                                                <th scope="col" class="border-0">Nombre</th>
-                                                <th scope="col" class="border-0">Grupo</th>
-                                                <th scope="col" class="border-0">Ciclo Escolar</th>
+                                                <th scope="col" class="border-0">Usuario</th>
+                                                <th scope="col" class="border-0">Nombre Completo</th>
+                                                <th scope="col" class="border-0">Puntos</th>
                                                 <td scope="col" class="border-0">Opcion</td>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr ng-repeat="alumno in alumnos">
-                                                <td>{{ alumno.nombre }} {{ alumno.apellido_paterno }} {{ alumno.apellido_materno
+                                            <tr ng-repeat="usuario in usuarios">
+                                                <td>{{ usuario.usuario }}</td>
+                                                <td>{{ usuario.nombre }} {{ usuario.apellido_paterno}} {{ usuario.apellido_materno
                                                     }}
                                                 </td>
-                                                <td>{{ alumno.grupo }}</td>
-                                                <td>{{ alumno.ciclo_escolar.fecha_inicio }} - {{ alumno.ciclo_escolar.fecha_fin
-                                                    }}
-                                                </td>
+                                                <td>{{ usuario.puntos }}</td>
                                                 <td>
-                                                    <button class="btn btn-light" ng-click="eliminarAlumno(alumno)">
-                                                        <i class="fa fa-trash"></i>
+                                                    <button class="btn btn-light" data-toggle="modal" data-target="#exampleModal" ng-click="seleccionarUsuario(usuario)">
+                                                        <i class="fa fa-plus"></i>
                                                     </button>
                                                 </td>
                                             </tr>
@@ -274,6 +198,53 @@
         </div>
     </div>
 
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-md" role="document">
+            <div class="modal-content modal-md">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Agregar Puntos</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="">Puntos a Agregar</label>
+                                <input type="number" class="form-control" ng-model="venta.puntos" ng-change="addPuntos()">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="">Total a Pagar: </label>
+                                <input type="text" disabled class="form-control" ng-model="venta.total">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                                <div class="form-group">
+                                    <label for="">Puntos Actuales</label>
+                                    <input type="number" disabled class="form-control" ng-model="usuarioSeleccionado.puntos">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="">Total a Puntos: </label>
+                                    <input type="text" disabled class="form-control" ng-model="venta.totalPuntos">
+                                </div>
+                            </div>
+                    </div>  
+
+                    <div>
+                        <button class="btn btn-block btn-light btn-outline-primary" ng-click="agregarPuntos()" data-dismiss="modal">Agregar Puntos
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
@@ -287,7 +258,7 @@
     <script src="assets/scripts/shards-dashboards.1.1.0.min.js"></script>
     <script src="assets/scripts/app/app-blog-overview.1.1.0.js"></script>
 
-    <script src="js/views/alumnos.js"></script>
+    <script src="js/views/puntos.js"></script>
     <script src="js/views/logout.js"></script>
 </body>
 

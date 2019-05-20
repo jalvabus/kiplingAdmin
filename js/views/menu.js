@@ -14,6 +14,19 @@ var app = angular.module('menuApp', [])
 
         }
 
+        $scope.usuario = {};
+
+        $scope.authLogin = function () {
+            if (!localStorage.getItem("user")) {
+                window.location.replace('login.html');
+            } else {
+                $scope.usuario = JSON.parse(window.localStorage.getItem('user'));
+                console.log($scope.usuario);
+            }
+        }
+
+        $scope.authLogin();
+
         $scope.getFechaSemana = function () {
 
             $scope.add = 0;

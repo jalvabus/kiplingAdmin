@@ -6,6 +6,19 @@ var app = angular.module('cicloEscolarApp', [])
         $scope.ciclosEscolares = [];
         $scope.cicloEscolarRegistro = {};
 
+        $scope.usuario = {};
+
+        $scope.authLogin = function () {
+            if (!localStorage.getItem("user")) {
+                window.location.replace('login.html');
+            } else {
+                $scope.usuario = JSON.parse(window.localStorage.getItem('user'));
+                console.log($scope.usuario);
+            }
+        }
+
+        $scope.authLogin();
+        
         $scope.getAll = function () {
             $http({
                 method: 'GET',

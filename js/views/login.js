@@ -23,9 +23,9 @@ app.controller('loginController', ($scope, $http) => {
             data: 'usuario=' + $scope.usuario.usuario + '&password=' + $scope.usuario.password
         }).then((response, err) => {
             console.log(response.data);
-            var usuario = response.data;
+            var res = response.data;
 
-            if (!usuario) {
+            if (res.msg === "No existe el usuario") {
                 swal({
                     title: "Error!",
                     text: "Usuario o contraseña incorrecto",
@@ -33,13 +33,13 @@ app.controller('loginController', ($scope, $http) => {
                 })
             } else {
                 swal({
-                    title: "Error!",
-                    text: "Bienvenido " + usuario.usuario,
+                    title: "Bienvenido: ",
+                    text: res.usuario.usuario,
                     icon: "success"
                 }).then(()=>{
-                    location.replace("inicio.html");
+                    location.replace("pedidos.html");
                 })
-                $scope.saveUserLocalStorage(usuario);
+                $scope.saveUserLocalStorage(res.usuario);
                 setTimeout(() => {
                     location.replace("pedidos.html");
                 }, 2000)

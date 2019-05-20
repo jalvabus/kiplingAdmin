@@ -5,6 +5,18 @@ var app = angular.module('usuariosApp', [])
 
         $scope.alumno = [];
         $scope.usuario = {};
+        $scope.usuarioRegistro = {};
+
+        $scope.authLogin = function () {
+            if (!localStorage.getItem("user")) {
+                window.location.replace('login.html');
+            } else {
+                $scope.usuario = JSON.parse(window.localStorage.getItem('user'));
+                console.log($scope.usuario);
+            }
+        }
+
+        $scope.authLogin();
 
         $scope.getAll = function () {
             $http({
@@ -38,14 +50,14 @@ var app = angular.module('usuariosApp', [])
                 method: 'POST',
                 url: $scope.API + 'usuario',
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                data: 'nombre=' + $scope.usuario.nombre +
-                    '&apellido_paterno=' + $scope.usuario.apellido_paterno +
-                    '&apellido_materno=' + $scope.usuario.apellido_materno +
-                    '&email=' + $scope.usuario.email +
-                    '&direccion=' + $scope.usuario.direccion +
-                    '&telefono=' + $scope.usuario.telefono
+                data: 'nombre=' + $scope.usuarioRegistro.nombre +
+                    '&apellido_paterno=' + $scope.usuarioRegistro.apellido_paterno +
+                    '&apellido_materno=' + $scope.usuarioRegistro.apellido_materno +
+                    '&email=' + $scope.usuarioRegistro.email +
+                    '&direccion=' + $scope.usuarioRegistro.direccion +
+                    '&telefono=' + $scope.usuarioRegistro.telefono
             }).then((response, err) => {
-                $scope.usuario = {};
+                $scope.usuarioRegistro = {};
                 swal({
                     title: "Usuario registrado",
                     text: "Se ah registrado el usuario",
@@ -67,7 +79,7 @@ var app = angular.module('usuariosApp', [])
                 method: 'POST',
                 url: $scope.API + 'usuario/' + $scope.usuarioSeleccionado._id,
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                data: 'id_alumno=' + $scope.usuario.id_alumno
+                data: 'id_alumno=' + $scope.usuarioRegistro.id_alumno
             }).then((response, err) => {
                 console.log(response);
 
@@ -128,18 +140,4 @@ var app = angular.module('usuariosApp', [])
                     }
                 })
         }
-
-        $scope.ciclosEscolares = [];
-        $scope.getAllCicloEscolar = function () {
-            var data = '?action=getAll'
-            $http({
-                method: 'GET',
-                url: $scope.API + 'ciclo_escolar/index.php' + data
-            }).then((response, err) => {
-                console.log(response);
-                $scope.ciclosEscolares = response.data.ciclos_escolares;
-            })
-        }
-
-        $scope.getAllCicloEscolar();
     })
