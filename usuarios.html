@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="usuariosApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Padres de familia</title>
+
+    <!-- Style Templates -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <link rel="stylesheet" id="main-stylesheet" data-version="1.1.0" href="assets/styles/shards-dashboards.1.1.0.min.css">
+    <link rel="stylesheet" href="assets/styles/extras.1.1.0.min.css">
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+
+    <!-- Angular & SweetAlert-->
+    <script src="js/angular/angular.js"></script>
+    <script src="js/sweetalert/sweetalert.js"></script>
+    <script src="js/jquery-3.2.1.min.js"></script>
+</head>
+
+<body class="h-100" ng-controller="usuariosController">
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Main Sidebar -->
+            <aside class="main-sidebar col-12 col-md-3 col-lg-2 px-0">
+                <div class="main-navbar">
+                    <nav class="navbar align-items-stretch navbar-light bg-white flex-md-nowrap border-bottom p-0">
+                        <a class="navbar-brand w-100 mr-0" link="['/admin']" style="line-height: 25px;">
+                            <div class="d-table m-auto">
+                                <img id="main-logo" class="d-inline-block align-top mr-1" style="max-width: 25px;" src="assets/images/shards-dashboards-logo.svg"
+                                    alt="Shards Dashboard">
+                                <span class="d-none d-md-inline ml-1">Cafeteria Kipling</span>
+                            </div>
+                        </a>
+                        <a class="toggle-sidebar d-sm-inline d-md-none d-lg-none">
+                            <i class="material-icons">&#xE5C4;</i>
+                        </a>
+                    </nav>
+                </div>
+                <form action="#" class="main-sidebar__search w-100 border-right d-sm-flex d-md-none d-lg-none">
+                    <div class="input-group input-group-seamless ml-3">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                <i class="fas fa-search"></i>
+                            </div>
+                        </div>
+                        <input class="navbar-search form-control" type="text" placeholder="Search for something..."
+                            aria-label="Search">
+                    </div>
+                </form>
+                <div class="nav-wrapper">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" href="pedidos.html">
+                                <i class="material-icons">edit</i>
+                                <span>Pedidos</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="entrega-pedidos.html">
+                                <i class="material-icons">edit</i>
+                                <span>Entrega de Pedidos</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " href="menu.html">
+                                <i class="material-icons">vertical_split</i>
+                                <span>Menu</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " href="alumnos.html">
+                                <i class="material-icons">note_add</i>
+                                <span>Alumnos</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="usuarios.html">
+                                <i class="material-icons">view_module</i>
+                                <span>Padres de Familia</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " href="ciclo-escolar.html">
+                                <i class="material-icons">table_chart</i>
+                                <span>Ciclo Escolar</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+            <main class="main-content col-lg-10 col-md-9 col-sm-12 p-0 offset-lg-2 offset-md-3">
+                <div class="main-navbar sticky-top bg-white">
+                    <!-- Main Navbar -->
+                    <nav class="navbar align-items-stretch navbar-light flex-md-nowrap p-0">
+                        <form action="#" class="main-navbar__search w-100 d-none d-md-flex d-lg-flex">
+                            <div class="input-group input-group-seamless ml-3">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <i class="fas fa-search"></i>
+                                    </div>
+                                </div>
+                                <input class="navbar-search form-control" type="text" placeholder="Search for something..."
+                                    aria-label="Search">
+                            </div>
+                        </form>
+                        <ul class="navbar-nav border-left flex-row ">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle text-nowrap px-3" data-toggle="dropdown" href="#"
+                                    role="button" aria-haspopup="true" aria-expanded="false">
+                                    <img class="user-avatar rounded-circle mr-2" src="assets/images/avatars/0.jpg" alt="User Avatar">
+                                    <span class="d-none d-md-inline-block">Sierra Brooks</span>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-small">
+                                    <a class="dropdown-item" href="user-profile-lite.html">
+                                        <i class="material-icons">&#xE7FD;</i> Profile</a>
+                                    <a class="dropdown-item text-danger" href="#">
+                                        <i class="material-icons text-danger">&#xE879;</i> Logout </a>
+                                </div>
+                            </li>
+                        </ul>
+                        <nav class="nav">
+                            <a href="#" class="nav-link nav-link-icon toggle-sidebar d-md-inline d-lg-none text-center border-left"
+                                data-toggle="collapse" data-target=".header-navbar" aria-expanded="false" aria-controls="header-navbar">
+                                <i class="material-icons">&#xE5D2;</i>
+                            </a>
+                        </nav>
+                    </nav>
+                </div>
+
+
+                <!-- / .main-navbar -->
+                <div class="main-content-container container-fluid px-4">
+                    <!-- Page Header -->
+                    <div class="page-header row no-gutters py-4">
+                        <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
+                            <span class="text-uppercase page-subtitle">Cafeteria Kipling</span>
+                            <h3 class="page-title">Usuarios Kipling (Padres de Familia)</h3>
+                        </div>
+                    </div>
+                    <!-- End Page Header -->
+
+                    <div class="row">
+
+                        <div class="col-sm-12">
+                            <div class="card card-small mb-4 pt-3">
+                                <div class="card-header border-bottom text-center">
+                                    <h4 class="mb-0">Agregar Usuario</h4>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item px-4">
+                                        <div class="progress-wrapper">
+                                            <strong class="text-muted d-block mb-2">Datos del Padre de Familia</strong>
+                                            <div class="row">
+                                                <div class="col-sm-12 col-md-12 col-lg-4">
+                                                    <div class="form-group">
+                                                        <label for="">Nombre</label>
+                                                        <input type="text" class="form-control" ng-model="usuario.nombre">
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-12 col-md-12 col-lg-4">
+                                                    <div class="form-group">
+                                                        <label for="">Apellido Paterno</label>
+                                                        <input type="text" class="form-control" ng-model="usuario.apellido_paterno">
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-12 col-md-12 col-lg-4">
+                                                    <div class="form-group">
+                                                        <label for="">Apellido Materno</label>
+                                                        <input type="text" class="form-control" ng-model="usuario.apellido_materno">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-sm-12 col-md-12 col-lg-4">
+                                                    <div class="form-group">
+                                                        <label for="">Email</label>
+                                                        <input type="text" class="form-control" ng-model="usuario.email">
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-12 col-md-12 col-lg-4">
+                                                    <div class="form-group">
+                                                        <label for="">Direccion</label>
+                                                        <input type="text" class="form-control" ng-model="usuario.direccion">
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-12 col-md-12 col-lg-4">
+                                                    <div class="form-group">
+                                                        <label for="">Telefono</label>
+                                                        <input type="number" class="form-control" ng-model="usuario.telefono">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="row">
+                                                <div class="col-sm-12 col-md-12 col-lg-4">
+
+                                                </div>
+                                                <div class="col-sm-12 col-md-12 col-lg-4">
+
+                                                </div>
+                                                <div class="col-sm-12 col-md-12 col-lg-4">
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item p-4">
+                                        <button class="btn btn-block btn-primary" ng-click="registrarUsuario()">Agregar</button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Default Light Table -->
+                        <div class="col-lg-12">
+                            <div class="card card-small mb-4">
+                                <div class="card-header border-bottom">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <h6 class="m-0">Usuarios Actuales</h6>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label for="">Filrar Por Nombre</label>
+                                                <input type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body p-0 pb-3 text-center">
+                                    <table class="table mb-0">
+                                        <thead class="bg-light">
+                                            <tr>
+                                                <th scope="col" class="border-0">Usuario</th>
+                                                <th scope="col" class="border-0">Nombre Completo</th>
+                                                <th scope="col" class="border-0">Direccion</th>
+                                                <th scope="col" class="border-0">Email</th>
+                                                <th scope="col" class="border-0">Telefono</th>
+                                                <td scope="col" class="border-0">Opcion</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="usuario in usuarios">
+                                                <td>{{ usuario.usuario }}</td>
+                                                <td>{{ usuario.nombre }} {{ usuario.apellido_paterno}} {{
+                                                    usuario.apellido_materno }}</td>
+                                                <td>{{ usuario.direccion }}</td>
+                                                <td>{{ usuario.email }}</td>
+                                                <td>{{ usuario.telefono }}</td>
+                                                <td>
+                                                    <button class="btn btn-light" ng-click="eliminarUsuario(usuario)">
+                                                        <i class="fa fa-trash"></i>
+                                                    </button>
+                                                    <button class="btn btn-light" data-toggle="modal" data-target="#exampleModal"
+                                                        ng-click="agregarAlumnos(usuario)">
+                                                        <i class="fa fa-list"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Default Light Table -->
+                    </div>
+                </div>
+
+
+                <footer class="main-footer d-flex p-2 px-3 bg-white border-top">
+                    <span class="copyright ml-auto my-auto mr-2">Copyright © 2018
+                        <a href="https://designrevision.com" rel="nofollow">DesignRevision</a>
+                    </span>
+                </footer>
+            </main>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-md" role="document">
+            <div class="modal-content modal-md">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Datos del Padre</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-5">
+                        <h6>Alumnos</h6>
+                        <table class="table mb-0">
+                            <thead class="bg-light" ng-repeat="alumn in usuarioSeleccionado.alumno">
+                                <tr>
+                                    <th>{{ alumn.nombre }} {{ alumn.apellido_paterno }} {{ alumn.apellido_materno }} -
+                                        {{ alumn.grupo}}</th>
+                                    <th>
+                                        <button data-dismiss="modal" class="btn btn-danger btn-sm" ng-click="removerAlumno(alumn)">
+                                            <i class="fa fa-trash"></i>
+                                        </button>
+                                    </th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Alumno (Hijo)</label>
+                        <select name="" id="" class="form-control" ng-model="usuario.id_alumno">
+                            <option ng-repeat="alumno in alumnos" value="{{ alumno._id }}">{{
+                                alumno.nombre }} {{ alumno.apellido_paterno }} {{
+                                alumno.apellido_materno }}</option>
+                        </select>
+                    </div>
+                    <div>
+                        <button class="btn btn-block btn-light btn-outline-primary" ng-click="relacionarAlumno()"
+                            data-dismiss="modal">Relacionar Alumno</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+    <script src="https://unpkg.com/shards-ui@latest/dist/js/shards.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sharrre/2.0.1/jquery.sharrre.min.js"></script>
+    <script src="assets/scripts/extras.1.1.0.min.js"></script>
+    <script src="assets/scripts/shards-dashboards.1.1.0.min.js"></script>
+    <script src="assets/scripts/app/app-blog-overview.1.1.0.js"></script>
+
+    <script src="js/views/usuario.js"></script>
+</body>
+
+</html>
