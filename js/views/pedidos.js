@@ -1,7 +1,6 @@
 var app = angular.module('pedidosApp', [])
     .controller('pedidosController', ($scope, $http) => {
         $scope.pedidos = [];
-        $scope.API = "http://localhost:3002/api/";
 
         $scope.startDate = null;
         $scope.endDate = null;
@@ -66,11 +65,24 @@ var app = angular.module('pedidosApp', [])
             var data = '?action=getByWeek&fecha_inicio=' + $scope.startDate + '&fecha_fin=' + $scope.endDate;
             $http({
                 method: 'GET',
-                url: $scope.API + 'pedido/index.php' + data
+                url: API + 'pedido' + data
             }).then((response, err) => {
                 console.log(response.data);
                 var data = response.data;
-                $scope.pedidos = data.pedidos;
+                $scope.pedidos = data;
+
+                var y = 0;
+                response.data.forEach((pedido, i) => {
+                    if (!pedido.entregado) {
+                        $scope.pedidos[y].fecha = moment(pedido.fecha, 'YYYY-MM-DD').format('YYYY-MM-DD');
+
+                        pedido.detalles.forEach((detalles, x) => {
+                            $scope.pedidos[y].detalles[x].menu.dia = $scope.detDaySpanish(moment(detalles.menu.fecha).format('dddd'));
+                        })
+
+                        x++;
+                    }
+                })
             })
 
         }
@@ -79,12 +91,12 @@ var app = angular.module('pedidosApp', [])
 
         }
 
-        // $scope.getPedidosSemana();
+        $scope.getPedidosSemana();
 
         $scope.getAll = function () {
             $http({
                 method: 'GET',
-                url: $scope.API + 'pedido'
+                url: API + 'pedido'
             }).then((response, err) => {
                 console.log(response.data);
                 $scope.pedidos = response.data;
@@ -130,5 +142,51 @@ var app = angular.module('pedidosApp', [])
         $scope.pedido = {};
         $scope.selectPedido = function (pedido) {
             $scope.pedido = pedido;
+        }
+
+        $scope.pagarPedido = function (pedido) {
+            console.log(pedido);
+
+            var data = 'id=' + pedido._id;
+            $http({
+                method: 'POST',
+                url: API + 'pedido/pagarPedido',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                data: data
+            }).then((response, err) => {
+                console.log(response.data);
+                var data = response.data;
+
+                swal({
+                    title: "Pedido Pagado!",
+                    text: data.mensaje,
+                    icon: "success",
+                });
+
+                $scope.getAll();
+            })
+        }
+
+        $scope.entregarPedido = function (pedido, detalles) {
+            console.log(pedido);
+            console.log(detalles);
+
+            var data = 'idPedido=' + pedido._id + '&idDetalle=' + detalles._id;
+            $http({
+                method: 'POST',
+                url: API + 'pedido/entregarPedido',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                data: data
+            }).then((response, err) => {
+                console.log(response.data);
+                var data = response.data;
+
+                swal({
+                    title: "Pedido Pagado!",
+                    text: data.mensaje,
+                    icon: "success",
+                });
+                $scope.getAll();
+            })
         }
     })

@@ -1,8 +1,6 @@
 var app = angular.module('alumnosApp', [])
     .controller('alumnosController', ($scope, $http) => {
 
-        $scope.API = "http://localhost:3002/api/";
-
         $scope.alumnos = [];
         $scope.alumno = {};
 
@@ -22,7 +20,7 @@ var app = angular.module('alumnosApp', [])
         $scope.getAll = function () {
             $http({
                 method: 'GET',
-                url: $scope.API + 'alumno'
+                url: API + 'alumno'
             }).then((response, err) => {
                 console.log(response);
                 $scope.alumnos = response.data;
@@ -40,7 +38,7 @@ var app = angular.module('alumnosApp', [])
 
             $http({
                 method: 'POST',
-                url: $scope.API + 'alumno',
+                url: API + 'alumno',
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                 data: 'nombre=' + $scope.alumno.nombre +
                     '&apellido_paterno=' + $scope.alumno.apellido_paterno +
@@ -74,7 +72,7 @@ var app = angular.module('alumnosApp', [])
                     if (willDelete) {
                         $http({
                             method: 'DELETE',
-                            url: $scope.API + 'alumno/' + alumno._id,
+                            url: API + 'alumno/' + alumno._id,
                             headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
                         }).then((response, err) => {
                             console.log(response);
@@ -95,7 +93,7 @@ var app = angular.module('alumnosApp', [])
             $http({
                 method: 'GET',
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                url: $scope.API + 'ciclo_escolar'
+                url: API + 'ciclo_escolar'
             }).then((response, err) => {
                 console.log(response);
                 $scope.ciclosEscolares = response.data.ciclos_escolares;

@@ -12,9 +12,10 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-        crossorigin="anonymous">
-    <link rel="stylesheet" id="main-stylesheet" data-version="1.1.0" href="assets/styles/shards-dashboards.1.1.0.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" id="main-stylesheet" data-version="1.1.0"
+        href="assets/styles/shards-dashboards.1.1.0.min.css">
     <link rel="stylesheet" href="assets/styles/extras.1.1.0.min.css">
     <script async defer src="https://buttons.github.io/buttons.js"></script>
 
@@ -38,8 +39,8 @@
                     <nav class="navbar align-items-stretch navbar-light bg-white flex-md-nowrap border-bottom p-0">
                         <a class="navbar-brand w-100 mr-0" link="['/admin']" style="line-height: 25px;">
                             <div class="d-table m-auto">
-                                <img id="main-logo" class="d-inline-block align-top mr-1" style="max-width: 25px;" src="assets/images/shards-dashboards-logo.svg"
-                                    alt="Shards Dashboard">
+                                <img id="main-logo" class="d-inline-block align-top mr-1" style="max-width: 25px;"
+                                    src="assets/images/shards-dashboards-logo.svg" alt="Shards Dashboard">
                                 <span class="d-none d-md-inline ml-1">Cafeteria Kipling</span>
                             </div>
                         </a>
@@ -55,49 +56,57 @@
                                 <i class="fas fa-search"></i>
                             </div>
                         </div>
-                        <input class="navbar-search form-control" type="text" placeholder="Busca algo..." aria-label="Search">
+                        <input class="navbar-search form-control" type="text" placeholder="Busca algo..."
+                            aria-label="Search">
                     </div>
                 </form>
                 <div class="nav-wrapper">
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link" href="puntos.html">
+                            <a class="nav-link" href="puntos.html"
+                                ng-if="usuario.tipo === 'admin' || usuario.tipo === 'recepcion'">
                                 <i class="material-icons">payment</i>
                                 <span>Puntos</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="pedidos.html">
-                                <i class="material-icons">list</i>
+                            <a class="nav-link " href="pedidos.html"
+                                ng-if="usuario.tipo === 'admin' || usuario.tipo === 'cafeteria'">
+                                <i class="material-icons">edit</i>
                                 <span>Pedidos</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="entrega-pedidos.html">
+                            <a class="nav-link" href="entrega-pedidos.html"
+                                ng-if="usuario.tipo === 'admin' || usuario.tipo === 'cafeteria'">
                                 <i class="material-icons">edit</i>
                                 <span>Entrega de Pedidos</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="menu.html">
+                            <a class="nav-link active" href="menu.html"
+                                ng-if="usuario.tipo === 'admin' || usuario.tipo === 'cafeteria'">
                                 <i class="material-icons">vertical_split</i>
                                 <span>Menu</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link " href="alumnos.html">
+                            <a class="nav-link " href="alumnos.html"
+                                ng-if="usuario.tipo === 'admin' || usuario.tipo === 'cafeteria'">
                                 <i class="material-icons">note_add</i>
                                 <span>Alumnos</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link " href="usuarios.html">
+                            <a class="nav-link " href="usuarios.html"
+                                ng-if="usuario.tipo === 'admin' || usuario.tipo === 'cafeteria'">
                                 <i class="material-icons">view_module</i>
                                 <span>Padres de Familia</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link " href="ciclo-escolar.html">
+                            <a class="nav-link " href="ciclo-escolar.html"
+                                ng-if="usuario.tipo === 'admin' || usuario.tipo === 'cafeteria'">
                                 <i class="material-icons">table_chart</i>
                                 <span>Ciclo Escolar</span>
                             </a>
@@ -112,8 +121,10 @@
                         <form action="#" class="main-navbar__search w-100 d-none d-md-flex d-lg-flex"> </form>
                         <ul class="navbar-nav border-left flex-row ">
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle text-nowrap px-3" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                                    <span class="d-none d-md-inline-block">{{ usuario.usuario }} - {{ usuario.tipo }}</span>
+                                <a class="nav-link dropdown-toggle text-nowrap px-3" data-toggle="dropdown" href="#"
+                                    role="button" aria-haspopup="true" aria-expanded="false">
+                                    <span class="d-none d-md-inline-block">{{ usuario.usuario }} -
+                                        {{ usuario.tipo }}</span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-small">
                                     <a class="dropdown-item" href="perfil.html">
@@ -124,8 +135,10 @@
                             </li>
                         </ul>
                         <nav class="nav">
-                            <a href="#" class="nav-link nav-link-icon toggle-sidebar d-md-inline d-lg-none text-center border-left" data-toggle="collapse"
-                                data-target=".header-navbar" aria-expanded="false" aria-controls="header-navbar">
+                            <a href="#"
+                                class="nav-link nav-link-icon toggle-sidebar d-md-inline d-lg-none text-center border-left"
+                                data-toggle="collapse" data-target=".header-navbar" aria-expanded="false"
+                                aria-controls="header-navbar">
                                 <i class="material-icons">&#xE5D2;</i>
                             </a>
                         </nav>
@@ -157,7 +170,8 @@
                                         <div class="progress-wrapper">
                                             <div class="row">
                                                 <div class="col-lg-3">
-                                                    <button class="btn btn-primary btn-block" data-toggle="modal" data-target="#exampleModal">Agregar
+                                                    <button class="btn btn-primary btn-block" data-toggle="modal"
+                                                        data-target="#exampleModal">Agregar
                                                         Menu
                                                     </button>
                                                 </div>
@@ -231,7 +245,8 @@
 
 
                 <!-- Modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content">
                             <div class="modal-header text-center">
@@ -254,19 +269,23 @@
                                         </h5>
                                         <div class="form-group">
                                             <label for="">Comida</label>
-                                            <input type="text" class="form-control" ng-model="menu.comida" placeholder="Comida">
+                                            <input type="text" class="form-control" ng-model="menu.comida"
+                                                placeholder="Comida">
                                         </div>
                                         <div class="form-group">
                                             <label for="">Agua</label>
-                                            <input type="text" class="form-control" ng-model="menu.agua" placeholder="Agua">
+                                            <input type="text" class="form-control" ng-model="menu.agua"
+                                                placeholder="Agua">
                                         </div>
                                         <div class="form-group">
                                             <label for="">Postre</label>
-                                            <input type="text" class="form-control" ng-model="menu.postre" placeholder="Postre">
+                                            <input type="text" class="form-control" ng-model="menu.postre"
+                                                placeholder="Postre">
                                         </div>
                                         <div class="form-group">
                                             <label for="">Precio Puntos</label>
-                                            <input type="number" class="form-control" ng-model="menu.precio" placeholder="Precio">
+                                            <input type="number" class="form-control" ng-model="menu.precio"
+                                                placeholder="Precio">
                                         </div>
                                     </div>
                                     <div class="col-6">
@@ -275,25 +294,30 @@
                                         </h5>
                                         <div class="form-group">
                                             <label for="">Comida</label>
-                                            <input type="text" class="form-control" ng-model="menu2.comida" placeholder="Comida">
+                                            <input type="text" class="form-control" ng-model="menu2.comida"
+                                                placeholder="Comida">
                                         </div>
                                         <div class="form-group">
                                             <label for="">Agua</label>
-                                            <input type="text" class="form-control" ng-model="menu2.agua" placeholder="Agua">
+                                            <input type="text" class="form-control" ng-model="menu2.agua"
+                                                placeholder="Agua">
                                         </div>
                                         <div class="form-group">
                                             <label for="">Postre</label>
-                                            <input type="text" class="form-control" ng-model="menu2.postre" placeholder="Postre">
+                                            <input type="text" class="form-control" ng-model="menu2.postre"
+                                                placeholder="Postre">
                                         </div>
                                         <div class="form-group">
                                             <label for="">Precio Puntos</label>
-                                            <input type="number" class="form-control" ng-model="menu2.precio" placeholder="Precio">
+                                            <input type="number" class="form-control" ng-model="menu2.precio"
+                                                placeholder="Precio">
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <button class="btn btn-primary btn-block" ng-click="registrarMenu()" data-dismiss="modal">Registrar
+                                    <button class="btn btn-primary btn-block" ng-click="registrarMenu()"
+                                        data-dismiss="modal">Registrar
                                         Menu
                                     </button>
                                 </div>
@@ -315,11 +339,13 @@
         </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
         crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
     <script src="https://unpkg.com/shards-ui@latest/dist/js/shards.min.js"></script>
@@ -328,8 +354,10 @@
     <script src="assets/scripts/shards-dashboards.1.1.0.min.js"></script>
     <script src="assets/scripts/app/app-blog-overview.1.1.0.js"></script>
 
-    <script src="js/views/menu.js"></script>
+    <script src="js/views/api.js"></script>
     <script src="js/views/logout.js"></script>
+    <script src="js/views/menu.js"></script>
+
 </body>
 
 </html>

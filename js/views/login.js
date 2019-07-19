@@ -11,14 +11,12 @@ let app = angular.module("loginApp", []);
 
 app.controller('loginController', ($scope, $http) => {
 
-    $scope.API = "http://localhost:3002/api/";
-    $scope.MAIN = "http://localhost:3002/";
     $scope.usuario = {};
 
     $scope.login = function () {
         $http({
             method: 'POST',
-            url: $scope.MAIN + 'login',
+            url: MAIN + 'login',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             data: 'usuario=' + $scope.usuario.usuario + '&password=' + $scope.usuario.password
         }).then((response, err) => {

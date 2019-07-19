@@ -1,7 +1,6 @@
 var app = angular.module('menuApp', [])
     .controller('menuController', ($scope, $http) => {
-        $scope.API = "http://localhost:3002/api/";
-
+        
         $scope.menus = [];
         $scope.startDate = null;
         $scope.endDate = null;
@@ -76,7 +75,7 @@ var app = angular.module('menuApp', [])
             $http({
                 method: 'POST',
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                url: $scope.API + 'menu/getByDate',
+                url: API + 'menu/getByDate',
                 data: data
             }).then((response, err) => {
                 console.log("obteniendo menus")
@@ -146,7 +145,7 @@ var app = angular.module('menuApp', [])
             new Promise((resolve, reject) => {
                 $http({
                     method: 'POST',
-                    url: $scope.API + 'menu',
+                    url: API + 'menu',
                     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                     data: 'fecha=' + fecha +
                         '&comida=' + $scope.menu.comida +
@@ -163,7 +162,7 @@ var app = angular.module('menuApp', [])
 
                     $http({
                         method: 'POST',
-                        url: $scope.API + 'menu',
+                        url: API + 'menu',
                         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                         data: 'fecha=' + fecha +
                             '&comida=' + $scope.menu2.comida +
@@ -208,7 +207,7 @@ var app = angular.module('menuApp', [])
                         new Promise((resolve, reject) => {
                             $http({
                                 method: 'DELETE',
-                                url: $scope.API + 'menu/' + menus.menu1._id,
+                                url: API + 'menu/' + menus.menu1._id,
                                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
                             }).then((response, err) => {
                                 console.log(response);
@@ -217,7 +216,7 @@ var app = angular.module('menuApp', [])
                         }).then(() => {
                             $http({
                                 method: 'DELETE',
-                                url: $scope.API + 'menu/' + menus.menu2._id,
+                                url: API + 'menu/' + menus.menu2._id,
                                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
                             }).then((response, err) => {
                                 console.log(response);

@@ -1,8 +1,6 @@
 var app = angular.module('usuariosApp', [])
     .controller('usuariosController', ($scope, $http) => {
 
-        $scope.API = "http://localhost:3002/api/";
-
         $scope.alumno = [];
         $scope.usuario = {};
 
@@ -20,7 +18,7 @@ var app = angular.module('usuariosApp', [])
         $scope.getAll = function () {
             $http({
                 method: 'GET',
-                url: $scope.API + 'usuario'
+                url: API + 'usuario'
             }).then((response, err) => {
                 console.log(response);
                 $scope.usuarios = response.data;
@@ -32,7 +30,7 @@ var app = angular.module('usuariosApp', [])
         $scope.getPuntosTotales = function () {
             $http({
                 method: 'GET',
-                url: $scope.API + 'puntos'
+                url: API + 'puntos'
             }).then((response, err) => {
                 console.log(response);
                 $scope.puntos = response.data;
@@ -50,7 +48,7 @@ var app = angular.module('usuariosApp', [])
             console.log($scope.usuarioSeleccionado);
             $http({
                 method: 'POST',
-                url: $scope.API + 'usuario/' + $scope.usuarioSeleccionado._id,
+                url: API + 'usuario/' + $scope.usuarioSeleccionado._id,
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                 data: 'id_alumno=' + $scope.usuario.id_alumno
             }).then((response, err) => {
@@ -79,7 +77,7 @@ var app = angular.module('usuariosApp', [])
         }
 
         $scope.agregarPuntos = function () {
-            if ($scope.puntos.totalPuntos < $scope.venta.totalPuntos) {
+            if ($scope.puntos.totalPuntos < $scope.venta.puntos) {
                 swal({
                     title: "Puntos insuficientes",
                     text: "No se cuenta con los puntos suficientes para realizar la accion",
@@ -101,7 +99,7 @@ var app = angular.module('usuariosApp', [])
         $scope.agregarPuntosUsuario = function () {
             $http({
                 method: 'POST',
-                url: $scope.API + 'usuario/addPuntos/' + $scope.usuarioSeleccionado._id,
+                url: API + 'usuario/addPuntos/' + $scope.usuarioSeleccionado._id,
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                 data: 'totalPuntos=' + $scope.venta.totalPuntos
             })
@@ -122,9 +120,9 @@ var app = angular.module('usuariosApp', [])
             return new Promise((resolve, reject) => {
                 $http({
                     method: 'POST',
-                    url: $scope.API + 'puntos/removePuntos/' + $scope.puntos._id,
+                    url: API + 'puntos/removePuntos/' + $scope.puntos._id,
                     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                    data: 'puntos=' + (Number($scope.puntos.totalPuntos) - Number($scope.venta.totalPuntos))
+                    data: 'puntos=' + (Number($scope.puntos.totalPuntos) - Number($scope.venta.puntos))
                 })
                     .then((response, err) => {
                         console.log(response.data);
@@ -137,7 +135,7 @@ var app = angular.module('usuariosApp', [])
             return new Promise((resolve, reject) => {
                 $http({
                     method: 'POST',
-                    url: $scope.API + 'venta-puntos',
+                    url: API + 'venta-puntos',
                     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                     data: 'puntos=' + Number($scope.venta.totalPuntos) + '&usuario=' + $scope.usuarioSeleccionado._id
                 })

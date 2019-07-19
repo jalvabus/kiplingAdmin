@@ -1,8 +1,6 @@
 var app = angular.module('cicloEscolarApp', [])
     .controller('cocloEscolarController', ($scope, $http) => {
 
-        $scope.API = "http://localhost:3002/api/";
-
         $scope.ciclosEscolares = [];
         $scope.cicloEscolarRegistro = {};
 
@@ -23,7 +21,7 @@ var app = angular.module('cicloEscolarApp', [])
             $http({
                 method: 'GET',
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                url: $scope.API + 'ciclo_escolar'
+                url: API + 'ciclo_escolar'
             }).then((response, err) => {
                 console.log(response);
                 $scope.ciclosEscolares = response.data.ciclos_escolares;
@@ -39,7 +37,7 @@ var app = angular.module('cicloEscolarApp', [])
             $http({
                 method: 'GET',
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                url: $scope.API + 'ciclo_escolar_actual'
+                url: API + 'ciclo_escolar_actual'
             }).then((response, err) => {
                 console.log(response);
                 $scope.cicloEscolar = response.data;
@@ -58,7 +56,7 @@ var app = angular.module('cicloEscolarApp', [])
                 console.log("No hay")
                 $http({
                     method: 'PUT',
-                    url: $scope.API + 'ciclo_escolar_actual',
+                    url: API + 'ciclo_escolar_actual',
                     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                     data: 'action=updateOne' +
                         '&id_ciclo_escolar=' + $scope.cicloEscolarActual +
@@ -78,7 +76,7 @@ var app = angular.module('cicloEscolarApp', [])
                 console.log($scope.cicloEscolar);
                 $http({
                     method: 'PUT',
-                    url: $scope.API + 'ciclo_escolar_actual',
+                    url: API + 'ciclo_escolar_actual',
                     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                     data: 'action=updateOne' +
                         '&id_ciclo_escolar=' + $scope.cicloEscolarActual +
@@ -106,7 +104,7 @@ var app = angular.module('cicloEscolarApp', [])
             console.log($scope.cicloEscolarActual);
             $http({
                 method: 'POST',
-                url: $scope.API + 'ciclo_escolar',
+                url: API + 'ciclo_escolar',
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                 data: 'fecha_inicio=' + temporal.inicio +
                     '&fecha_fin=' + temporal.fin
@@ -134,7 +132,7 @@ var app = angular.module('cicloEscolarApp', [])
                 if (willDelete) {
                     $http({
                         method: 'DELETE',
-                        url: $scope.API + 'ciclo_escolar/' + ciclo_escolar._id,
+                        url: API + 'ciclo_escolar/' + ciclo_escolar._id,
                         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                         data: 'action=deleteOne' +
                             '&id_ciclo_escolar=' + ciclo_escolar._id

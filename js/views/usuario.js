@@ -1,8 +1,6 @@
 var app = angular.module('usuariosApp', [])
     .controller('usuariosController', ($scope, $http) => {
 
-        $scope.API = "http://localhost:3002/api/";
-
         $scope.alumno = [];
         $scope.usuario = {};
         $scope.usuarioRegistro = {};
@@ -21,7 +19,7 @@ var app = angular.module('usuariosApp', [])
         $scope.getAll = function () {
             $http({
                 method: 'GET',
-                url: $scope.API + 'usuario'
+                url: API + 'usuario'
             }).then((response, err) => {
                 console.log(response);
                 $scope.usuarios = response.data;
@@ -35,7 +33,7 @@ var app = angular.module('usuariosApp', [])
         $scope.getAllAlumnos = function () {
             $http({
                 method: 'GET',
-                url: $scope.API + 'alumno'
+                url: API + 'alumno'
             }).then((response, err) => {
                 console.log(response);
                 $scope.alumnos = response.data;
@@ -48,7 +46,7 @@ var app = angular.module('usuariosApp', [])
 
             $http({
                 method: 'POST',
-                url: $scope.API + 'usuario',
+                url: API + 'usuario',
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                 data: 'nombre=' + $scope.usuarioRegistro.nombre +
                     '&apellido_paterno=' + $scope.usuarioRegistro.apellido_paterno +
@@ -77,7 +75,7 @@ var app = angular.module('usuariosApp', [])
             console.log($scope.usuarioSeleccionado);
             $http({
                 method: 'POST',
-                url: $scope.API + 'usuario/' + $scope.usuarioSeleccionado._id,
+                url: API + 'usuario/' + $scope.usuarioSeleccionado._id,
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                 data: 'id_alumno=' + $scope.usuarioRegistro.id_alumno
             }).then((response, err) => {
@@ -97,7 +95,7 @@ var app = angular.module('usuariosApp', [])
         $scope.removerAlumno = function (alumno) {
             $http({
                 method: 'DELETE',
-                url: $scope.API + 'usuario/removeAlumno/' + $scope.usuarioSeleccionado._id,
+                url: API + 'usuario/removeAlumno/' + $scope.usuarioSeleccionado._id,
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                 data: 'id_alumno=' + alumno._id
             }).then((response, err) => {
@@ -126,7 +124,7 @@ var app = angular.module('usuariosApp', [])
                     if (willDelete) {
                         $http({
                             method: 'DELETE',
-                            url: $scope.API + 'usuario/' + usuario._id,
+                            url: API + 'usuario/' + usuario._id,
                             headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
                         }).then((response, err) => {
                             console.log(response);
